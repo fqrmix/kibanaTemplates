@@ -1,4 +1,9 @@
     const templates  = [
+	    	{
+			id: 0,
+			name: 'Error',
+			body: 'Error1'
+		},
 		{
 			id: 1,
 			name: 'Причина в Кассе',
@@ -28,7 +33,7 @@
         templateSelectBlock.classList.add = 'template-select-block'
 
         const templateSelector = document.createElement('select')
-        templateSelector.innerHTML = '<option selected disabled>Выбери шаблон</option>' + templates.filter(x => x.id !== 6723)
+        templateSelector.innerHTML = '<option selected disabled>Выбери шаблон</option>' + templates.filter(x => x.id !== 0)
           .map(template => `<option value="${template.body}">${template.name}</option>`).join('')
         const closeSelectorButton = document.createElement('button')
         closeSelectorButton.innerText = '❌'
