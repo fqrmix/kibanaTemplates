@@ -90,8 +90,13 @@
 
 		templateSelector.addEventListener('change', event => {
 			const data = templates.find(currentTemplate => currentTemplate.id === +event.target.value);
-			navigator.clipboard.writeText(data.body);
-			alert('Текст шаблона скопирован в буфер обмена. Модуль: ' + data.module);
+			navigator.clipboard.writeText(data.body)
+			.then(() => {
+				alert('Текст шаблона скопирован в буфер обмена. Модуль: ' + data.module);
+			})
+				.catch(err => {
+					console.log('Something went wrong', err);
+				});
 		  });
 		  
         closeSelectorButton.addEventListener('click', () => templateSelectBlock.remove())
