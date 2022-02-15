@@ -47,36 +47,35 @@
         templateSelectBlock.classList.add('template-select-block');
 
 		const templateSelector = document.createElement('select');
-
 		const options = templates.map(template => {
-			const opt = document.createElement('option');
+			const templateOptions = document.createElement('option');
 
-			opt.data = template;
-			opt.value = template.id;
-			opt.innerText = template.id !== 0
+			templateOptions.value = template.id;
+			templateOptions.innerText = template.id !== 0
 			  ? template.name
 			  :'Выбери шаблон';
 
 			if (template.id === 0) {
-			  opt.selected = true;
-			  opt.disabled = true;
+			  templateOptions.selected = true;
+			  templateOptions.disabled = true;
 			}
 
-			return opt;
+			return templateOptions;
 		});
 
-		options.map(opt => templateSelector.appendChild(opt));
+		options.map(templateOptions => templateSelector.appendChild(templateOptions));
 		  
 		const closeSelectorButton = document.createElement('button')
         closeSelectorButton.innerText = '❌'
         closeSelectorButton.title = 'Закрыть'
-
+		
+		
         templateSelectBlock.style = 'display: flex; z-index: 9999999999999; position: fixed; top: 10px; width: 20%; margin: 20px; margin-left: 40%; border: 2px solid #8b3ffd; background-color: #fff; padding: 20px; color: white;'
         templateSelector.style = 'border: 1px solid #8b3ffd; border-radius: 5px 0px 0px 5px; width: 80%; border-right: none; height: 3rem;'
         closeSelectorButton.style = 'width: 19%; border: 1px solid #8b3ffd; border-radius: 0px 5px 5px 0px; border-left: none; cursor: pointer;'
 
 		templateSelector.addEventListener('change', event => {
-			const data = templates.find(tmp => tmp.id === +event.target.value);
+			const data = templates.find(currentTemplate => currentTemplate.id === +event.target.value);
 			navigator.clipboard.writeText(data.body);
 			alert('Текст шаблона скопирован в буфер обмена. Модуль: ' + data.module);
 		  });
