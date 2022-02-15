@@ -19,7 +19,7 @@
 		{
 			id: 3,
 			name: 'Поиск платежа без попытки',
-			body: 'test3'
+			body: 'Payload: "КОШЕЛЕК" && Payload: "CreateShopOrderRequest"'
 		},
 		
 		{
