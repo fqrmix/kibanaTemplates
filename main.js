@@ -8,9 +8,9 @@
 		{
 			id: 1,
 			name: 'Причина в Кассе',
-			body: 'Payload: "uniLabel" && Payload: ("warn" "error" "auth check unsuccessful" "restrictionid") \
-			&& NOT Payload: ("error=null" "errors=null" "error=optional" "error=optional.empty" \
-			"skip loyalty-gate request" "rollbackpayment")',
+			body: 'Payload: "uniLabel" && Payload: ("warn" "error" "auth check unsuccessful" "restrictionid") ' +
+			'&& NOT Payload: ("error=null" "errors=null" "error=optional" "error=optional.empty" ' +
+			'"skip loyalty-gate request" "rollbackpayment")',
 			module: 'backend-kassa-main'
 		},
 		
@@ -93,6 +93,7 @@
 			navigator.clipboard.writeText(data.body)
 			.then(() => {
 				alert('Текст шаблона скопирован в буфер обмена. Модуль: ' + data.module);
+				templateSelectBlock.remove();
 			})
 				.catch(err => {
 					console.log('Something went wrong', err);
