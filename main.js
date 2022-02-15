@@ -1,5 +1,6 @@
-    const templates  = [
-	    	{
+(() => {  
+	const templates  = [
+	    {
 			id: 0,
 			name: 'Error',
 			body: 'BodyError'
@@ -7,26 +8,38 @@
 		{
 			id: 1,
 			name: 'Причина в Кассе',
-			body: 'test1'
+			body: 'Payload: &quot;uniLabel&quot; && Payload: (&quot;warn&quot; &quot;error&quot; &quot;auth check unsuccessful&quot; &quot;restrictionid&quot;) \
+			&& NOT Payload: (&quot;error=null&quot; &quot;errors=null&quot; &quot;error=optional&quot; &quot;error=optional.empty&quot; \
+			&quot;skip loyalty-gate request&quot; &quot;rollbackpayment&quot;)',
+			module: 'backend-kassa-main'
 		},
 		
 		{
 			id: 2,
 			name: 'Ответ в шопах',
-			body: 'test2'
+			body: 'Payload: &quot;TraceID&quot; && Payload: (&quot;create-order-refused&quot; &quot;payment approval error&quot;)',
+			module: 'backend-shop-main'
 		},
 		
 		{
 			id: 3,
 			name: 'Поиск платежа без попытки',
-			body: 'Payload: &quot;КОШЕЛЕК&quot; && Payload: &quot;CreateShopOrderRequest&quot;',
+			body: 'Payload: &quot;Кошелек&quot; && Payload: &quot;CreateShopOrderRequest&quot;',
 			module: 'backend-kassa-main'
 		},
 		
 		{
 			id: 4,
 			name: 'HTTP-уведомление',
-			body: 'test4'
+			body: 'test4',
+			module: 'backend-notifier-main'
+		},	
+		
+		{
+			id: 5,
+			name: 'Поиск займа на карту юзера через наш лайт',
+			body: 'Payload: &quot;XXXXX YYYY&quot; && Payload: (&quot;CreateOrderCommand&quot; &quot;nst_unilabel=&quot; &quot;payerAccount&quot;)',
+			module: 'backend-deposit-main'
 		},	
 	]
 
@@ -46,11 +59,13 @@
 
         templateSelector.addEventListener('change', event => {
           const templateText = new DOMParser().parseFromString(event.target.value.replaceAll('<br />', '\n'), "text/html").documentElement.textContent;
+		  const templateModule = /* нужно сюда передать модуль активного элемента */
           navigator.clipboard.writeText(templateText)
-          alert('Текст шаблона скопирован в буфер обмена. Модуль:' + currentModule)
+          alert('Текст шаблона скопирован в буфер обмена. Модуль: ' + templateModule)
         })
         closeSelectorButton.addEventListener('click', () => templateSelectBlock.remove())
 
         templateSelectBlock.appendChild(templateSelector)
         templateSelectBlock.appendChild(closeSelectorButton)
         document.body.appendChild(templateSelectBlock)
+})()
