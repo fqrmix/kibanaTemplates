@@ -30,13 +30,27 @@
 		
 		{
 			id: 4,
-			name: 'HTTP-уведомление',
-			body: 'test4',
+			name: 'HTTP-уведомление (TraceID по uniLabel)',
+			body: 'Payload: "uniLabel" && Payload: ("QUEUE/eventQueue")',
 			module: 'backend-notifier-main'
 		},	
 		
 		{
 			id: 5,
+			name: 'HTTP-уведомление (Статус по TraceID)',
+			body: 'Payload: "TraceID" && Payload: ("QUEUE/httpNotifier" "httpStatus=")',
+			module: 'backend-notifier-main'
+		},	
+		
+		{
+			id: 6,
+			name: 'HTTP-уведомление (Статус по адресу обработчика)',
+			body: 'Payload: "Сайт" && Payload: ("QUEUE/httpNotifier" "HttpNotifier" "LogginingAsyncHttpFilter" "status=")',
+			module: 'backend-notifier-main'
+		},	
+		
+		{
+			id: 7,
 			name: 'Поиск займа на карту юзера через наш лайт',
 			body: 'Payload: "XXXXX YYYY" && Payload: ("CreateOrderCommand" "nst_unilabel=" "payerAccount")',
 			module: 'backend-deposit-main'
