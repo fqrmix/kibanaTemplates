@@ -2,7 +2,7 @@
 	    	{
 			id: 0,
 			name: 'Error',
-			body: 'Error1'
+			body: 'BodyError'
 		},
 		{
 			id: 1,
@@ -19,7 +19,8 @@
 		{
 			id: 3,
 			name: 'Поиск платежа без попытки',
-			body: 'Payload: "КОШЕЛЕК" && Payload: "CreateShopOrderRequest"'
+			body: 'Payload: &quot;КОШЕЛЕК&quot; && Payload: &quot;CreateShopOrderRequest&quot;',
+			module: 'backend-kassa-main'
 		},
 		
 		{
@@ -46,7 +47,7 @@
         templateSelector.addEventListener('change', event => {
           const templateText = new DOMParser().parseFromString(event.target.value.replaceAll('<br />', '\n'), "text/html").documentElement.textContent;
           navigator.clipboard.writeText(templateText)
-          alert('Текст шаблона скопирован в буфер обмена.')
+          alert('Текст шаблона скопирован в буфер обмена. Модуль:' + currentModule)
         })
         closeSelectorButton.addEventListener('click', () => templateSelectBlock.remove())
 
