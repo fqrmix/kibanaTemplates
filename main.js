@@ -56,7 +56,15 @@
 			name: 'Поиск займа на карту юзера через наш лайт',
 			body: 'Payload: "XXXXX YYYY" && Payload: ("CreateOrderCommand" "nst_unilabel=" "payerAccount")',
 			module: 'backend-deposit-main'
-		}
+		},
+
+		{
+			id: 8,
+			name: 'Поиск подписки по e-mail',
+			body: 'Payload: "Почта" && Payload: ("PaymentAvisoCommand" "NotifyPaymentHeldCommand" "operationLabel" "merchantOrderId")',
+			module: 'backend-shop-main'
+		},
+
 	]
 
 	const 	templateSelectBlock = document.createElement('div');
@@ -96,7 +104,7 @@
 				confirm("Текст шаблона скопирован в буфер обмена. \nМодуль: " + data.module +
 					"\n\nЗакрыть окно?")
 					? templateSelectBlock.remove()
-					: console.log('Window is not closed. Continue choose');
+					: console.log('Window is not closed. Continue');
 			})
 			.catch(err => {
 				console.log('Something went wrong', err);
