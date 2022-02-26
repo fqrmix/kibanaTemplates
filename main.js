@@ -1,5 +1,4 @@
 (() => {
-
 	const templates  = [
 		{
 			id: 0,
@@ -25,7 +24,7 @@
 
 		{
 			id: 3,
-			name: 'Поиск платежа без попытки',
+			name: 'Поиск платежа по кошельку без попытки',
 			body: 'Payload: "Кошелек" && Payload: "CreateShopOrderRequest"',
 			module: 'backend-kassa-main'
 		},
@@ -40,21 +39,21 @@
 		{
 			id: 5,
 			name: 'HTTP-уведомление (Статус по TraceID)',
-			body: 'Payload: "TraceID" && Payload: ("QUEUE/httpNotifier" "httpStatus=")',
+			body: 'Payload: "TraceID" && Payload: ("httpStatus=")',
 			module: 'backend-notifier-main'
 		},
 
 		{
 			id: 6,
 			name: 'HTTP-уведомление (Статус по адресу обработчика)',
-			body: 'Payload: "Сайт" && Payload: ("QUEUE/httpNotifier" "HttpNotifier" "LogginingAsyncHttpFilter" "status=")',
+			body: 'Payload: "Сайт" && Payload: ("HttpNotifier" "LogginingAsyncHttpFilter" "status=")',
 			module: 'backend-notifier-main'
 		},
 
 		{
 			id: 7,
 			name: 'Поиск займа на карту юзера через наш лайт',
-			body: 'Payload: "XXXXX YYYY" && Payload: ("CreateOrderCommand" "nst_unilabel=" "payerAccount")',
+			body: 'Payload: "XXXXXX YYYY" && Payload: ("CreateOrderCommand" "nst_unilabel=" "payerAccount")',
 			module: 'backend-deposit-main'
 		},
 
@@ -67,7 +66,7 @@
 
 	]
 
-	const 	templateSelectBlock = document.createElement('div');
+	const templateSelectBlock = document.createElement('div');
 	templateSelectBlock.classList.add('template-select-block');
 
 	const templateSelector = document.createElement('select');
@@ -89,7 +88,7 @@
 
 	options.map(templateOptions => templateSelector.appendChild(templateOptions));
 
-	const 	closeSelectorButton = document.createElement('button');
+	const closeSelectorButton = document.createElement('button');
 	closeSelectorButton.innerText = '❌';
 	closeSelectorButton.title = 'Закрыть';
 
